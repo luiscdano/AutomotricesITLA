@@ -1,6 +1,8 @@
 # Miscellaneous
+.idea/
+.vscode/
+*.iml
 *.class
-*.lock
 *.log
 *.pyc
 *.swp
