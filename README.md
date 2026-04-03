@@ -284,15 +284,39 @@ Criterio de aceptacion (estado):
 - Cumplido: todos los modulos implementados con consumo real del API y manejo `loading/error/empty`.
 - Excepcion controlada: en el backend actual, algunos recursos marcados como publicos requieren sesion; la app muestra mensaje claro y permite continuar tras login.
 
-## Fase 3 - Perfil y vehiculos (nucleo de datos del usuario)
+## Fase 3 - Perfil y vehiculos (nucleo de datos del usuario) (COMPLETADA)
 
-Tareas:
-- Mi perfil (lectura + cambio de foto).
-- Mis vehiculos (listar, crear, editar, cambiar foto, detalle financiero).
-- Camara/galeria con permisos Android.
+Hecho:
+- Arquitectura privada implementada en `lib/features/private`:
+  - `data/private_repository.dart`
+  - `data/private_repository_impl.dart`
+  - `models/private_models.dart`
+  - `presentation/screens/*`
+- Mi perfil implementado:
+  - lectura de perfil autenticado (`GET /perfil`).
+  - cambio de foto con camara/galeria (`POST /perfil/foto` multipart).
+  - visualizacion de matricula, correo, rol, grupo y fecha de registro.
+- Mis vehiculos implementado:
+  - listado con filtros locales por marca/modelo (`GET /vehiculos`).
+  - registro de vehiculo con foto opcional (`POST /vehiculos` multipart).
+  - edicion de datos (`POST /vehiculos/editar`).
+  - cambio de foto de vehiculo (`POST /vehiculos/foto` multipart).
+  - detalle con resumen financiero (`GET /vehiculos/detalle?id=...`).
+- UI Fase 3 integrada:
+  - `AuthenticatedHomeScreen` actualizado con acceso directo a hub privado.
+  - `PrivateHubScreen` con accesos a Perfil y Vehiculos.
+  - estilo consistente oscuro con estados `loading/error/empty`.
+- Soporte de imagenes y permisos:
+  - dependencia `image_picker` agregada.
+  - permiso Android `CAMERA` agregado en `AndroidManifest.xml`.
+- Validacion tecnica de fase:
+  - `flutter pub get` ejecutado.
+  - `dart format lib` ejecutado.
+  - `flutter analyze` sin errores.
+  - `flutter test` aprobado.
 
-Criterio de aceptacion:
-- Usuario administra vehiculos y visualiza resumen financiero por vehiculo.
+Criterio de aceptacion (estado):
+- Cumplido: el usuario puede administrar sus vehiculos (crear/editar/foto) y ver resumen financiero por vehiculo.
 
 ## Fase 4 - Operaciones del vehiculo + foro autenticado
 
@@ -324,7 +348,7 @@ Criterio de aceptacion:
 - [x] Fase 0 completada.
 - [x] Fase 1 completada.
 - [x] Fase 2 completada.
-- [ ] Fase 3 pendiente.
+- [x] Fase 3 completada.
 - [ ] Fase 4 pendiente.
 - [ ] Fase 5 pendiente.
 
@@ -337,4 +361,4 @@ Criterio de aceptacion:
 
 ## Proximo paso para validacion del equipo
 
-Iniciar Fase 3 (perfil y vehiculos).
+Iniciar Fase 4 (operaciones del vehiculo + foro autenticado).

@@ -14,6 +14,7 @@ import 'features/auth/domain/usecases/refresh_session_usecase.dart';
 import 'features/auth/domain/usecases/register_usecase.dart';
 import 'features/auth/domain/usecases/restore_session_usecase.dart';
 import 'features/auth/presentation/controllers/auth_controller.dart';
+import 'features/private/data/private_repository_impl.dart';
 import 'features/public/data/public_repository_impl.dart';
 
 Future<void> main() async {
@@ -29,6 +30,7 @@ Future<void> main() async {
     apiClient: apiClient,
     tokenStorage: tokenStorage,
   );
+  final privateRepository = PrivateRepositoryImpl(apiClient: apiClient);
   final publicRepository = PublicRepositoryImpl(apiClient: apiClient);
 
   final authController = AuthController(
@@ -45,6 +47,7 @@ Future<void> main() async {
   runApp(
     AutomotricesApp(
       authController: authController,
+      privateRepository: privateRepository,
       publicRepository: publicRepository,
     ),
   );
