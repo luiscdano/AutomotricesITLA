@@ -360,18 +360,33 @@ Hecho:
 Criterio de aceptacion (estado):
 - Cumplido: flujo operativo completo sobre vehiculos autenticados y participacion activa en foro autenticado (crear tema + responder + mis temas).
 
-## Fase 5 - Cierre, QA y entrega
+## Fase 5 - Cierre, QA y entrega (COMPLETADA)
 
-Tareas:
-- Pruebas funcionales por modulo.
-- Pulido UI/UX.
-- Icono final (vehiculo + rostros).
-- Generar APK.
-- Preparar video.
-- Preparar PDF con QR.
+Hecho:
+- QA tecnico final ejecutado:
+  - `flutter analyze` sin issues.
+  - `flutter test` aprobado.
+  - `flutter build apk --release` generado correctamente.
+- Artefacto release generado:
+  - `build/app/outputs/flutter-apk/app-release.apk` (APK final Android).
+- Icono final del proyecto aplicado para Android (tema automotriz + rostros):
+  - fuente: `assets/images/app_icon_square.png`.
+  - recursos regenerados en `android/app/src/main/res/*`.
+- Dependencia de generacion de iconos incorporada:
+  - `flutter_launcher_icons` en `dev_dependencies`.
+  - configuracion en `pubspec.yaml` orientada a Android.
+- Script de cierre automatizado agregado:
+  - `scripts/release_check.sh` (analyze + test + build release).
+- Documentacion de entrega agregada:
+  - `docs/FASE5_CIERRE_QA_ENTREGA.md` con:
+    - checklist funcional completo por modulos,
+    - guion sugerido para video,
+    - estructura recomendada del PDF final,
+    - checklist final de entrega academica.
+  - `docs/QA_EVIDENCIA_2026-04-03.md` con evidencia resumida de analyze/test/build.
 
-Criterio de aceptacion:
-- Checklist academico completo y material de entrega listo.
+Criterio de aceptacion (estado):
+- Cumplido: base tecnica cerrada, APK release generado, icono final aplicado y checklist/documentacion de entrega listos para completar video + PDF + QR.
 
 ## Matriz de estado (viva)
 
@@ -380,7 +395,7 @@ Criterio de aceptacion:
 - [x] Fase 2 completada.
 - [x] Fase 3 completada.
 - [x] Fase 4 completada.
-- [ ] Fase 5 pendiente.
+- [x] Fase 5 completada.
 
 ## Decisiones tecnicas recomendadas
 
@@ -391,4 +406,8 @@ Criterio de aceptacion:
 
 ## Proximo paso para validacion del equipo
 
-Iniciar Fase 5 (cierre, QA final y preparacion de entrega academica).
+Finalizar evidencias manuales de entrega:
+- grabar y publicar video demo,
+- generar PDF final con capturas,
+- insertar QR del video en el PDF,
+- validar checklist final en `docs/FASE5_CIERRE_QA_ENTREGA.md`.
