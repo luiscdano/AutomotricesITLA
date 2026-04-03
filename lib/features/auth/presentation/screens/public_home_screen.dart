@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/config/app_config.dart';
 import '../../../../shared/widgets/feedback_banner.dart';
+import '../../../public/presentation/screens/public_hub_screen.dart';
 import '../controllers/auth_controller.dart';
 import 'forgot_password_screen.dart';
 import 'login_screen.dart';
@@ -11,15 +11,29 @@ import 'register_activate_screen.dart';
 class PublicHomeScreen extends StatelessWidget {
   const PublicHomeScreen({super.key});
 
+  static const Color _cardColor = Color(0xCC111111);
+  static const Color _brown = Color(0xFF8E4A2D);
+  static const Color _cream = Color(0xFFF4DBD3);
+
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<AuthController>();
+    final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
+          const Positioned.fill(child: ColoredBox(color: Colors.black)),
           Positioned.fill(
-            child: Image.asset('assets/images/portada.png', fit: BoxFit.cover),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Image.asset(
+                'assets/images/portada.png',
+                width: screenWidth,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
           ),
           Positioned.fill(
             child: DecoratedBox(
@@ -28,9 +42,9 @@ class PublicHomeScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black.withValues(alpha: 0.25),
-                    Colors.black.withValues(alpha: 0.55),
-                    Colors.black.withValues(alpha: 0.85),
+                    Colors.black.withValues(alpha: 0.08),
+                    Colors.black.withValues(alpha: 0.35),
+                    Colors.black.withValues(alpha: 0.88),
                   ],
                 ),
               ),
@@ -42,24 +56,25 @@ class PublicHomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha: 0.4),
-                      borderRadius: BorderRadius.circular(99),
-                    ),
-                    child: const Text(
-                      'AUTOMOTRICES ITLA',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.8,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton.filledTonal(
+                      tooltip: 'Explorar modulos publicos',
+                      style: IconButton.styleFrom(
+                        backgroundColor: Colors.black.withValues(alpha: 0.42),
+                        foregroundColor: Colors.white,
                       ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (_) => const PublicHubScreen(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.dashboard_customize_rounded),
                     ),
                   ),
+                  const SizedBox(height: 8),
                   const Spacer(),
                   if (controller.errorMessage != null)
                     FeedbackBanner(
@@ -75,43 +90,19 @@ class PublicHomeScreen extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF111111).withValues(alpha: 0.78),
+                      color: _cardColor,
                       borderRadius: BorderRadius.circular(18),
                       border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.2),
+                        color: Colors.white.withValues(alpha: 0.18),
                       ),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Portada del Proyecto Final',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w800,
-                            height: 1.1,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Fase 1 completada. Flujo base de autenticacion listo para pruebas.',
-                          style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.9),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'API: ${AppConfig.apiBaseUrl}',
-                          style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.85),
-                            fontSize: 12,
-                          ),
-                        ),
-                        const SizedBox(height: 14),
                         FilledButton.icon(
                           style: FilledButton.styleFrom(
                             minimumSize: const Size(double.infinity, 48),
+                            backgroundColor: _brown,
+                            foregroundColor: Colors.white,
                           ),
                           onPressed: () {
                             Navigator.of(context).push(
@@ -127,6 +118,8 @@ class PublicHomeScreen extends StatelessWidget {
                         FilledButton.tonalIcon(
                           style: FilledButton.styleFrom(
                             minimumSize: const Size(double.infinity, 48),
+                            backgroundColor: _cream,
+                            foregroundColor: const Color(0xFF2B1F1B),
                           ),
                           onPressed: () {
                             Navigator.of(context).push(
@@ -142,6 +135,8 @@ class PublicHomeScreen extends StatelessWidget {
                         FilledButton.tonalIcon(
                           style: FilledButton.styleFrom(
                             minimumSize: const Size(double.infinity, 48),
+                            backgroundColor: _cream,
+                            foregroundColor: const Color(0xFF2B1F1B),
                           ),
                           onPressed: () {
                             Navigator.of(context).push(

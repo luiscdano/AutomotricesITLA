@@ -242,21 +242,47 @@ Criterio de aceptacion:
 - Token queda persistido y se envia automaticamente a endpoints protegidos.
 - App redirige correctamente al menu segun sesion.
 
-## Fase 2 - Modulos publicos y navegacion principal
+## Fase 2 - Modulos publicos y navegacion principal (COMPLETADA)
 
 Objetivo:
 - Completar experiencia base sin depender del flujo completo privado.
 
-Tareas:
-- Dashboard visual.
-- Noticias (lista y detalle HTML).
-- Videos.
-- Catalogo (filtro + detalle).
-- Foro lectura publica (`/publico/foro`).
-- Acerca de (equipo, telefono, telegram, correo).
+Hecho:
+- Arquitectura publica implementada en `lib/features/public`:
+  - `data/public_repository.dart`
+  - `data/public_repository_impl.dart`
+  - `models/public_models.dart`
+  - `presentation/screens/*`
+- Estrategia de consumo API implementada para inconsistencias del backend:
+  - Noticias y videos primero via `/publico/noticias` y `/publico/videos`.
+  - Fallback a rutas protegidas cuando aplica.
+  - Catalogo y detalle con fallback autenticado (`/catalogo`, `/catalogo/detalle`).
+  - Foro en lectura publica (`/publico/foro`, `/publico/foro/detalle`).
+- Dashboard/hub visual completado con accesos directos a:
+  - Noticias (lista + detalle HTML).
+  - Videos educativos.
+  - Catalogo (filtros marca/modelo/anio + detalle).
+  - Foro publico en lectura.
+  - Acerca de equipo (fotos locales, matriculas y contactos).
+- Navegacion integrada:
+  - Acceso a hub publico desde portada (icono superior).
+  - Acceso a hub publico desde home autenticado.
+- UI consistente aplicada en modulos de Fase 2:
+  - Fondo oscuro, textos claros, acentos marron/crema.
+  - Estados `loading`, `error` y `empty` en todos los modulos.
+- Dependencias y recursos agregados:
+  - `flutter_html`, `intl`, `url_launcher`.
+  - `assets/team/luis.png`, `assets/team/rafael.png`.
+- Validacion tecnica de fase:
+  - `flutter pub get` ejecutado.
+  - `dart format lib` ejecutado.
+  - `flutter analyze` sin errores.
+  - `flutter test` aprobado.
+  - Nota: en el entorno local el emulador Android ha estado intermitente; la app compila y corre correctamente en ejecución de Flutter, pero si vuelve a fallar ADB se recomienda reiniciar el AVD.
 
-Criterio de aceptacion:
-- Todos los modulos cargan datos reales del API y manejan loading/error/empty.
+Criterio de aceptacion (estado):
+- Cumplido: todos los modulos implementados con consumo real del API y manejo `loading/error/empty`.
+- Excepcion controlada: en el backend actual, algunos recursos marcados como publicos requieren sesion; la app muestra mensaje claro y permite continuar tras login.
 
 ## Fase 3 - Perfil y vehiculos (nucleo de datos del usuario)
 
@@ -297,7 +323,7 @@ Criterio de aceptacion:
 
 - [x] Fase 0 completada.
 - [x] Fase 1 completada.
-- [ ] Fase 2 pendiente.
+- [x] Fase 2 completada.
 - [ ] Fase 3 pendiente.
 - [ ] Fase 4 pendiente.
 - [ ] Fase 5 pendiente.
@@ -311,4 +337,4 @@ Criterio de aceptacion:
 
 ## Proximo paso para validacion del equipo
 
-Iniciar Fase 2 (modulos publicos y navegacion principal).
+Iniciar Fase 3 (perfil y vehiculos).

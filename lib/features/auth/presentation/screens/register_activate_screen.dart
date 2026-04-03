@@ -14,6 +14,16 @@ class RegisterActivateScreen extends StatefulWidget {
 }
 
 class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
+  static const Color _bg = Color(0xFF111111);
+  static const Color _surface = Color(0xE6191919);
+  static const Color _text = Colors.white;
+  static const Color _muted = Color(0xFFBEBEBE);
+  static const Color _fieldBg = Color(0xFF1F1F1F);
+  static const Color _fieldBorder = Color(0xFF5A5A5A);
+  static const Color _brown = Color(0xFF8E4A2D);
+  static const Color _cream = Color(0xFFF4DBD3);
+  static const Color _darkText = Color(0xFF2B1F1B);
+
   final TextEditingController _matriculaController = TextEditingController();
   final TextEditingController _tokenController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -75,7 +85,12 @@ class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
     final controller = context.watch<AuthController>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Registro y activacion')),
+      backgroundColor: _bg,
+      appBar: AppBar(
+        title: const Text('Registro y activacion'),
+        backgroundColor: _bg,
+        foregroundColor: _text,
+      ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
@@ -84,64 +99,97 @@ class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
               FeedbackBanner(message: controller.errorMessage!, isError: true),
             if (controller.infoMessage != null)
               FeedbackBanner(message: controller.infoMessage!, isError: false),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(14),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Paso 1: Registrar matricula',
-                      style: Theme.of(context).textTheme.titleMedium,
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: _surface,
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Paso 1: Registrar matricula',
+                    style: TextStyle(
+                      color: _text,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
                     ),
-                    const SizedBox(height: 12),
-                    AppTextField(
-                      controller: _matriculaController,
-                      label: 'Matricula',
-                      hint: '2024-0034',
-                      textInputAction: TextInputAction.done,
-                    ),
-                    const SizedBox(height: 12),
-                    PrimaryButton(
-                      label: 'Solicitar token temporal',
-                      isLoading: controller.isBusy,
-                      onPressed: _register,
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 12),
+                  AppTextField(
+                    controller: _matriculaController,
+                    label: 'Matricula',
+                    hint: '2024-0034',
+                    textInputAction: TextInputAction.done,
+                    textColor: _text,
+                    fillColor: _fieldBg,
+                    labelColor: _muted,
+                    hintColor: const Color(0xFF7B7B7B),
+                    borderColor: _fieldBorder,
+                  ),
+                  const SizedBox(height: 12),
+                  PrimaryButton(
+                    label: 'Solicitar token temporal',
+                    isLoading: controller.isBusy,
+                    onPressed: _register,
+                    backgroundColor: _brown,
+                    foregroundColor: Colors.white,
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 12),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(14),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Paso 2: Activar cuenta',
-                      style: Theme.of(context).textTheme.titleMedium,
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: _surface,
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Paso 2: Activar cuenta',
+                    style: TextStyle(
+                      color: _text,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
                     ),
-                    const SizedBox(height: 12),
-                    AppTextField(
-                      controller: _tokenController,
-                      label: 'Token temporal',
-                      hint: 'Pega el token recibido en registro',
-                    ),
-                    const SizedBox(height: 12),
-                    AppTextField(
-                      controller: _passwordController,
-                      label: 'Contrasena nueva',
-                      obscureText: true,
-                    ),
-                    const SizedBox(height: 12),
-                    PrimaryButton(
-                      label: 'Activar y entrar',
-                      isLoading: controller.isBusy,
-                      onPressed: _activate,
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 12),
+                  AppTextField(
+                    controller: _tokenController,
+                    label: 'Token temporal',
+                    hint: 'Pega el token recibido en registro',
+                    textColor: _text,
+                    fillColor: _fieldBg,
+                    labelColor: _muted,
+                    hintColor: const Color(0xFF7B7B7B),
+                    borderColor: _fieldBorder,
+                  ),
+                  const SizedBox(height: 12),
+                  AppTextField(
+                    controller: _passwordController,
+                    label: 'Contrasena nueva',
+                    obscureText: true,
+                    textColor: _text,
+                    fillColor: _fieldBg,
+                    labelColor: _muted,
+                    hintColor: const Color(0xFF7B7B7B),
+                    borderColor: _fieldBorder,
+                  ),
+                  const SizedBox(height: 12),
+                  PrimaryButton(
+                    label: 'Activar y entrar',
+                    isLoading: controller.isBusy,
+                    onPressed: _activate,
+                    backgroundColor: _cream,
+                    foregroundColor: _darkText,
+                  ),
+                ],
               ),
             ),
           ],

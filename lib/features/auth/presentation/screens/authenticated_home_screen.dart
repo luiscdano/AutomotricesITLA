@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/config/app_config.dart';
 import '../../../../shared/widgets/feedback_banner.dart';
+import '../../../public/presentation/screens/public_hub_screen.dart';
 import '../controllers/auth_controller.dart';
 
 class AuthenticatedHomeScreen extends StatelessWidget {
@@ -17,6 +18,17 @@ class AuthenticatedHomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Sesion autenticada'),
         actions: [
+          IconButton(
+            tooltip: 'Modulos publicos',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const PublicHubScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.dashboard_customize_rounded),
+          ),
           IconButton(
             tooltip: 'Cerrar sesion',
             onPressed: controller.isBusy

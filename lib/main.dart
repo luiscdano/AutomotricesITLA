@@ -14,6 +14,7 @@ import 'features/auth/domain/usecases/refresh_session_usecase.dart';
 import 'features/auth/domain/usecases/register_usecase.dart';
 import 'features/auth/domain/usecases/restore_session_usecase.dart';
 import 'features/auth/presentation/controllers/auth_controller.dart';
+import 'features/public/data/public_repository_impl.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ Future<void> main() async {
     apiClient: apiClient,
     tokenStorage: tokenStorage,
   );
+  final publicRepository = PublicRepositoryImpl(apiClient: apiClient);
 
   final authController = AuthController(
     registerUseCase: RegisterUseCase(authRepository),
@@ -40,5 +42,10 @@ Future<void> main() async {
     logoutUseCase: LogoutUseCase(authRepository),
   )..bootstrap();
 
-  runApp(AutomotricesApp(authController: authController));
+  runApp(
+    AutomotricesApp(
+      authController: authController,
+      publicRepository: publicRepository,
+    ),
+  );
 }
