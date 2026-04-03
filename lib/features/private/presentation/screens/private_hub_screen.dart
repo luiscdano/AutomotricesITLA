@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 import '../../../../shared/widgets/feedback_banner.dart';
 import '../../../auth/presentation/controllers/auth_controller.dart';
 import '../private_ui.dart';
+import 'authenticated_forum_screen.dart';
 import 'profile_screen.dart';
+import 'vehicle_operations_screen.dart';
 import 'vehicles_screen.dart';
 
 class PrivateHubScreen extends StatelessWidget {
@@ -18,7 +20,7 @@ class PrivateHubScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: PrivateUi.bg,
       appBar: AppBar(
-        title: const Text('Fase 3 - Perfil y vehiculos'),
+        title: const Text('Area privada - Fases 3 y 4'),
         backgroundColor: PrivateUi.bg,
         foregroundColor: PrivateUi.text,
       ),
@@ -76,6 +78,18 @@ class PrivateHubScreen extends StatelessWidget {
                   title: 'Mis vehiculos',
                   subtitle: 'CRUD + fotos + detalle',
                   onTap: () => _push(context, const VehiclesScreen()),
+                ),
+                _HubTile(
+                  icon: Icons.build_circle_rounded,
+                  title: 'Operaciones',
+                  subtitle: 'Manten., combustible, gomas y finanzas',
+                  onTap: () => _push(context, const VehicleOperationsScreen()),
+                ),
+                _HubTile(
+                  icon: Icons.forum_rounded,
+                  title: 'Foro autenticado',
+                  subtitle: 'Crear, responder y mis temas',
+                  onTap: () => _push(context, const AuthenticatedForumScreen()),
                 ),
               ],
             ),

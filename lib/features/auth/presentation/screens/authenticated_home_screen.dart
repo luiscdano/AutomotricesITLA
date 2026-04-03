@@ -99,7 +99,7 @@ class AuthenticatedHomeScreen extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.shield_rounded),
-                label: const Text('Abrir Fase 3 (Perfil y vehiculos)'),
+                label: const Text('Abrir Fases 3 y 4 (area privada)'),
               ),
             ),
             const SizedBox(height: 8),

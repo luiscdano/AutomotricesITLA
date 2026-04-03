@@ -318,17 +318,47 @@ Hecho:
 Criterio de aceptacion (estado):
 - Cumplido: el usuario puede administrar sus vehiculos (crear/editar/foto) y ver resumen financiero por vehiculo.
 
-## Fase 4 - Operaciones del vehiculo + foro autenticado
+## Fase 4 - Operaciones del vehiculo + foro autenticado (COMPLETADA)
 
-Tareas:
-- Mantenimientos + fotos.
-- Combustible/Aceite.
-- Gomas y pinchazos.
-- Gastos e ingresos.
-- Foro autenticado (crear, responder, mis temas).
+Hecho:
+- Capa de datos privada ampliada con endpoints de Fase 4 en `PrivateRepository`:
+  - Mantenimientos: `GET /mantenimientos`, `POST /mantenimientos`, `GET /mantenimientos/detalle`, `POST /mantenimientos/fotos`.
+  - Combustible/Aceite: `GET /combustibles`, `POST /combustibles`.
+  - Gomas/Pinchazos: `GET /gomas`, `POST /gomas/actualizar`, `POST /gomas/pinchazos`.
+  - Finanzas: `GET /gastos/categorias`, `GET/POST /gastos`, `GET/POST /ingresos`.
+  - Foro autenticado: `GET /foro/temas`, `GET /foro/detalle`, `POST /foro/crear`, `POST /foro/responder`, `GET /foro/mis-temas`.
+- Modelos privados agregados para Fase 4:
+  - `MaintenanceRecord`, `FuelRecord`, `TireState`, `TireStatus`, `TirePuncture`,
+  - `ExpenseCategory`, `ExpenseRecord`, `IncomeRecord`,
+  - `PrivateForumTopic`, `PrivateForumDetail`, `PrivateForumReply`.
+- UI Fase 4 implementada:
+  - `VehicleOperationsScreen` con 4 modulos por vehiculo:
+    - Mantenimientos (listar, filtrar, crear, detalle, subir fotos).
+    - Combustible/Aceite (listar, filtrar por tipo, crear registro).
+    - Gomas (ver estado por posicion, actualizar estado, registrar pinchazo).
+    - Finanzas (gastos, ingresos, balance, registrar gasto e ingreso).
+  - `AuthenticatedForumScreen`:
+    - temas abiertos,
+    - mis temas,
+    - crear nuevo tema ligado a un vehiculo del usuario.
+  - `AuthenticatedForumDetailScreen`:
+    - detalle del tema,
+    - lista de respuestas,
+    - composer para responder en tiempo real.
+- Navegacion privada actualizada:
+  - `PrivateHubScreen` ahora incluye accesos a:
+    - Mi perfil,
+    - Mis vehiculos,
+    - Operaciones del vehiculo,
+    - Foro autenticado.
+  - `AuthenticatedHomeScreen` actualizado para indicar acceso a Fases 3 y 4.
+- Validacion tecnica de fase:
+  - `dart format` ejecutado.
+  - `flutter analyze` sin issues.
+  - `flutter test` aprobado.
 
-Criterio de aceptacion:
-- Flujo completo operativo sobre un vehiculo real del usuario.
+Criterio de aceptacion (estado):
+- Cumplido: flujo operativo completo sobre vehiculos autenticados y participacion activa en foro autenticado (crear tema + responder + mis temas).
 
 ## Fase 5 - Cierre, QA y entrega
 
@@ -349,7 +379,7 @@ Criterio de aceptacion:
 - [x] Fase 1 completada.
 - [x] Fase 2 completada.
 - [x] Fase 3 completada.
-- [ ] Fase 4 pendiente.
+- [x] Fase 4 completada.
 - [ ] Fase 5 pendiente.
 
 ## Decisiones tecnicas recomendadas
@@ -361,4 +391,4 @@ Criterio de aceptacion:
 
 ## Proximo paso para validacion del equipo
 
-Iniciar Fase 4 (operaciones del vehiculo + foro autenticado).
+Iniciar Fase 5 (cierre, QA final y preparacion de entrega academica).
