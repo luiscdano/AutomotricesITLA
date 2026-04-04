@@ -29,7 +29,6 @@ Este documento sera la guia operativa del proyecto para:
 - Repositorio GitHub enlazado: `https://github.com/luiscdano/AutomotricesITLA`
 - Rama principal local sincronizada con `origin/main`.
 - Archivo base encontrado: `.gitignore` (orientado a Flutter).
-- Recursos existentes en raiz: `image.png`, `luis.png`, `rafael.png`.
 
 ## Auditoria tecnica del API (resultado)
 
