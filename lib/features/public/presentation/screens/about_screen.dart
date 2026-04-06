@@ -20,9 +20,9 @@ class AboutScreen extends StatelessWidget {
       name: 'Rafael J. Silfa',
       matricula: '2024-0034',
       photoAsset: 'assets/team/rafael.png',
-      phone: 'PENDIENTE ACTUALIZAR',
-      telegram: '@pendiente',
-      email: 'pendiente@itla.edu.do',
+      phone: '829-937-7387',
+      telegram: '@RafJsg',
+      email: '20240034@itla.edu.do',
     ),
   ];
 
