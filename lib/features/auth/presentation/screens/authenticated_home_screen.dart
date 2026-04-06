@@ -48,45 +48,71 @@ class AuthenticatedHomeScreen extends StatelessWidget {
             if (controller.infoMessage != null)
               FeedbackBanner(message: controller.infoMessage!, isError: false),
             Container(
-              padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: _card,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    user?.displayName ?? 'Usuario autenticado',
-                    style: const TextStyle(
-                      color: _text,
-                      fontSize: 21,
-                      fontWeight: FontWeight.w800,
-                    ),
+  padding: const EdgeInsets.all(14),
+  decoration: BoxDecoration(
+    color: _card,
+    borderRadius: BorderRadius.circular(18),
+    border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+  ),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      // ── AVATAR ──────────────────────────────────────────
+      Center(
+        child: CircleAvatar(
+          radius: 50,
+          backgroundColor: _brown,
+          backgroundImage: (user?.fotoUrl != null && user!.fotoUrl!.isNotEmpty)
+              ? NetworkImage(user.fotoUrl!)
+              : null,
+          child: (user?.fotoUrl == null || user!.fotoUrl!.isEmpty)
+              ? Text(
+                  (user!.displayName.isNotEmpty == true)
+                      ? user.displayName.characters.first.toUpperCase()
+                      : 'U',
+                  style: const TextStyle(
+                    color: _text,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24,
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Correo: ${user?.correo ?? '-'}',
-                    style: const TextStyle(color: _muted),
-                  ),
-                  Text(
-                    'Matricula: ${user?.matricula ?? '-'}',
-                    style: const TextStyle(color: _muted),
-                  ),
-                  Text(
-                    'Rol: ${user?.rol ?? '-'} | Grupo: ${user?.grupo ?? '-'}',
-                    style: const TextStyle(color: _muted),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'API: ${AppConfig.apiBaseUrl}',
-                    style: const TextStyle(color: _muted, fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 12),
+                )
+              : null,
+        ),
+      ),
+      const SizedBox(height: 12),
+      // ── NOMBRE Y DATOS ──────────────────────────────────
+      Text(
+        user.displayName,
+        style: const TextStyle(
+          color: _text,
+          fontSize: 21,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        'Correo: ${user.correo}',
+        style: const TextStyle(color: _muted),
+      ),
+      Text(
+        'Matricula: ${user.matricula ?? '-'}',
+        style: const TextStyle(color: _muted),
+      ),
+      Text(
+        'Rol: ${user.rol ?? '-'} | Grupo: ${user.grupo ?? '-'}',
+        style: const TextStyle(color: _muted),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        'API: ${AppConfig.apiBaseUrl}',
+        style: const TextStyle(color: _muted, fontSize: 12),
+      ),
+    ],
+  ),
+),
+                                  const SizedBox(height: 12),
+
+
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
@@ -99,7 +125,7 @@ class AuthenticatedHomeScreen extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.shield_rounded),
-                label: const Text('Abrir Fases 3 y 4 (area privada)'),
+                label: const Text('Abrir área privada)'),
               ),
             ),
             const SizedBox(height: 8),
@@ -114,7 +140,7 @@ class AuthenticatedHomeScreen extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.dashboard_customize_rounded),
-                label: const Text('Abrir Fase 2 (modulos publicos)'),
+                label: const Text('Abrir área  pública)'),
               ),
             ),
             const SizedBox(height: 8),
@@ -125,7 +151,7 @@ class AuthenticatedHomeScreen extends StatelessWidget {
                       context.read<AuthController>().syncProfile();
                     },
               icon: const Icon(Icons.person_search),
-              label: const Text('Sincronizar perfil (/perfil)'),
+              label: const Text('Sincronizar perfil '),
             ),
             const SizedBox(height: 8),
             FilledButton.tonalIcon(
@@ -135,7 +161,7 @@ class AuthenticatedHomeScreen extends StatelessWidget {
                       context.read<AuthController>().refreshToken();
                     },
               icon: const Icon(Icons.refresh),
-              label: const Text('Refrescar token (/auth/refresh)'),
+              label: const Text('Refrescar token '),
             ),
           ],
         ),
