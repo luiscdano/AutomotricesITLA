@@ -28,6 +28,7 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
   Future<CatalogDetail> _load() async {
     final result = await context.read<PublicRepository>().fetchCatalogDetail(
       id: widget.item.id,
+    
     );
 
     if (result.isFailure || result.data == null) {

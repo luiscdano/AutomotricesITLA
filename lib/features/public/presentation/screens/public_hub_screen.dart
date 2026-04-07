@@ -47,7 +47,7 @@ class _PublicHubScreenState extends State<PublicHubScreen> {
     return Scaffold(
       backgroundColor: PublicUi.bg,
       appBar: AppBar(
-        title: const Text('Fase 2 - Modulos publicos'),
+        title: const Text('Área publica'),
         backgroundColor: PublicUi.bg,
         foregroundColor: PublicUi.text,
       ),

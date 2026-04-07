@@ -73,8 +73,9 @@ class PublicRepositoryImpl implements PublicRepository {
     int? anio,
   }) async {
     try {
-      final envelope = await _getProtectedWithAuthFallback(
-        '/catalogo',
+      final envelope = await _getPublicThenProtected(
+        publicPath: 'publico/catalogo',
+        protectedPath: '/catalogo',
         queryParameters: {
           'page': page,
           'limit': limit,
@@ -82,6 +83,7 @@ class PublicRepositoryImpl implements PublicRepository {
           'modelo': modelo,
           'anio': anio,
         },
+      
       );
 
       final items = _asMapList(envelope.data).map(CatalogItem.fromMap).toList();
@@ -102,12 +104,15 @@ class PublicRepositoryImpl implements PublicRepository {
   }
 
   @override
-  Future<AppResult<CatalogDetail>> fetchCatalogDetail({required int id}) async {
+  Future<AppResult<CatalogDetail>> fetchCatalogDetail({
+    required int id, 
+    }) async {
     try {
-      final envelope = await _getProtectedWithAuthFallback(
-        '/catalogo/detalle',
+      final envelope = await _getPublicThenProtected(
+          publicPath: '/publico/catalogo/detalle', //a ver si sin publico funciona
+        protectedPath:   '/catalogo/detalle',
         queryParameters: {'id': id},
-      );
+        );
 
       final detail = CatalogDetail.fromMap(_asMap(envelope.data));
       return AppResult.success(detail);
@@ -172,7 +177,7 @@ class PublicRepositoryImpl implements PublicRepository {
       if (!shouldTryProtected) {
         rethrow;
       }
-      return _getProtectedWithAuthFallback(
+          return _getProtectedWithAuthFallback(
         protectedPath,
         queryParameters: queryParameters,
       );
@@ -183,6 +188,8 @@ class PublicRepositoryImpl implements PublicRepository {
     String path, {
     Map<String, dynamic>? queryParameters,
   }) async {
+     
+  
     try {
       return await _apiClient.get(path, queryParameters: queryParameters);
     } on AppException catch (error) {

@@ -16,7 +16,7 @@ abstract class PublicRepository {
     int? anio,
   });
 
-  Future<AppResult<CatalogDetail>> fetchCatalogDetail({required int id});
+  Future<AppResult<CatalogDetail>> fetchCatalogDetail({required int id,});
 
   Future<AppResult<List<ForumTopic>>> fetchPublicForum({
     int page = 1,

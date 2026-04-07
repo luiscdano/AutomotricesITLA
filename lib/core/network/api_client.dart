@@ -29,7 +29,7 @@ class ApiClient {
 
   final String _baseUrl;
   final TokenStorage _tokenStorage;
-  final http.Client _httpClient;
+final http.Client _httpClient;
 
   Future<ApiEnvelope> get(
     String path, {
@@ -40,7 +40,7 @@ class ApiClient {
     final uri = _buildUri(path, queryParameters: queryParameters);
 
     final response = await _httpClient.get(uri, headers: headers);
-    return _parseResponse(response);
+return _parseResponse(response);
   }
 
   Future<ApiEnvelope> postDatax(
