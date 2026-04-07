@@ -125,7 +125,7 @@ class AuthenticatedHomeScreen extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.shield_rounded),
-                label: const Text('Abrir área privada)'),
+                label: const Text('Abrir área privada'),
               ),
             ),
             const SizedBox(height: 8),
@@ -140,7 +140,7 @@ class AuthenticatedHomeScreen extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.dashboard_customize_rounded),
-                label: const Text('Abrir área  pública)'),
+                label: const Text('Abrir área  pública'),
               ),
             ),
             const SizedBox(height: 8),
