@@ -65,6 +65,10 @@ flutter:
 
   assets:
     - assets/images/portada.png
+    - assets/images/auto1.png
+    - assets/images/auto2.png
+    - assets/images/auto3.png
+    - assets/images/auto4.png
     - assets/team/luis.png
     - assets/team/rafael.png
 
