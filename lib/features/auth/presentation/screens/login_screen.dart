@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (matricula.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Completa matricula y contrasena.')),
+        const SnackBar(content: Text('Completa matrícula y contraseña.')),
       );
       return;
     }
@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: _bg,
       appBar: AppBar(
-        title: const Text('Iniciar sesion'),
+        title: const Text('Iniciar sesión'),
         backgroundColor: _bg,
         foregroundColor: _text,
       ),
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Accede con tu matricula ITLA',
+                    'Accede con tu matrícula ITLA',
                     style: TextStyle(
                       color: _text,
                       fontSize: 20,
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 14),
                   AppTextField(
                     controller: _matriculaController,
-                    label: 'Matricula',
+                    label: 'Matrícula',
                     hint: '2024-0034',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 12),
                   AppTextField(
                     controller: _passwordController,
-                    label: 'Contrasena',
+                    label: 'Contraseña',
                     obscureText: true,
                     textInputAction: TextInputAction.done,
                     textColor: _text,

@@ -57,7 +57,7 @@ class _VehicleOperationsScreenState extends State<VehicleOperationsScreen> {
     return Scaffold(
       backgroundColor: PrivateUi.bg,
       appBar: AppBar(
-        title: const Text('Fase 4 - Operaciones del vehiculo'),
+        title: const Text('Operaciones del vehiculo'),
         backgroundColor: PrivateUi.bg,
         foregroundColor: PrivateUi.text,
       ),
@@ -81,7 +81,7 @@ class _VehicleOperationsScreenState extends State<VehicleOperationsScreen> {
           if (vehicles.isEmpty) {
             return const PrivateEmptyView(
               message:
-                  'No tienes vehiculos. Registra uno en "Mis vehiculos" antes de usar este modulo.',
+                  'No tienes vehiculos. Registra uno en "Mis vehiculos" antes de usar este opción.',
             );
           }
 

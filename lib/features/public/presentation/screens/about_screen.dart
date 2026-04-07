@@ -49,10 +49,7 @@ class AboutScreen extends StatelessWidget {
           const SizedBox(height: 12),
           ..._members.map((member) => _MemberCard(member: member)),
           const SizedBox(height: 6),
-          Text(
-            'Nota: actualiza telefono/correo de Rafael antes de la entrega final.',
-            style: TextStyle(color: Colors.orange.shade200, fontSize: 12),
-          ),
+       
         ],
       ),
     );

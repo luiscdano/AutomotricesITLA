@@ -20,7 +20,7 @@ class PrivateHubScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: PrivateUi.bg,
       appBar: AppBar(
-        title: const Text('Area privada - Fases 3 y 4'),
+        title: const Text('Area privada'),
         backgroundColor: PrivateUi.bg,
         foregroundColor: PrivateUi.text,
       ),
@@ -69,14 +69,14 @@ class PrivateHubScreen extends StatelessWidget {
               children: [
                 _HubTile(
                   icon: Icons.person_rounded,
-                  title: 'Mi perfil',
-                  subtitle: 'Consultar y cambiar foto',
+                  title: 'Mi Perfil',
+                  subtitle: 'Datos de usuario',
                   onTap: () => _push(context, const ProfileScreen()),
                 ),
                 _HubTile(
                   icon: Icons.directions_car_filled_rounded,
-                  title: 'Mis vehiculos',
-                  subtitle: 'CRUD + fotos + detalle',
+                  title: 'Mis Vehiculos',
+                  subtitle: 'Lista de vhiculos',
                   onTap: () => _push(context, const VehiclesScreen()),
                 ),
                 _HubTile(
@@ -87,8 +87,8 @@ class PrivateHubScreen extends StatelessWidget {
                 ),
                 _HubTile(
                   icon: Icons.forum_rounded,
-                  title: 'Foro autenticado',
-                  subtitle: 'Crear, responder y mis temas',
+                  title: 'Foro Privado',
+                  subtitle: 'Crear y responder temas ',
                   onTap: () => _push(context, const AuthenticatedForumScreen()),
                 ),
               ],
@@ -101,7 +101,7 @@ class PrivateHubScreen extends StatelessWidget {
                       context.read<AuthController>().syncProfile();
                     },
               icon: const Icon(Icons.person_search),
-              label: const Text('Sincronizar perfil (/perfil)'),
+              label: const Text('Sincronizar perfil'),
             ),
             const SizedBox(height: 8),
             FilledButton.tonalIcon(
@@ -111,7 +111,7 @@ class PrivateHubScreen extends StatelessWidget {
                       context.read<AuthController>().refreshToken();
                     },
               icon: const Icon(Icons.refresh),
-              label: const Text('Refrescar token (/auth/refresh)'),
+              label: const Text('Refrescar token'),
             ),
           ],
         ),

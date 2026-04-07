@@ -35,7 +35,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     final matricula = _matriculaController.text.trim();
     if (matricula.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Ingresa la matricula para continuar.')),
+        const SnackBar(content: Text('Ingresa la matrícula para continuar.')),
       );
       return;
     }

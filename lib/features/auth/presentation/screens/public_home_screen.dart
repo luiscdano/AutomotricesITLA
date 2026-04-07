@@ -155,7 +155,7 @@ class _PublicHomeScreenState extends State<PublicHomeScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: IconButton.filledTonal(
-                      tooltip: 'Explorar modulos publicos',
+                      tooltip: 'Explorar Área pública',
                       style: IconButton.styleFrom(
                         backgroundColor: Colors.black.withValues(alpha: 0.42),
                         foregroundColor: Colors.white,
@@ -225,7 +225,7 @@ class _PublicHomeScreenState extends State<PublicHomeScreen> {
                             );
                           },
                           icon: const Icon(Icons.person_add_alt_1),
-                          label: const Text('Registro y activacion'),
+                          label: const Text('Registro y activación'),
                         ),
                         const SizedBox(height: 10),
                         FilledButton.tonalIcon(

@@ -85,7 +85,7 @@ class _AuthenticatedForumScreenState extends State<AuthenticatedForumScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'No se pudo cargar la lista de vehiculos. Abre Fase 3 y registra al menos un vehiculo.',
+            'No se pudo cargar la lista de vehiculos. Abre "Mis Vehiculos"y registra al menos un vehiculo.',
           ),
         ),
       );
@@ -136,7 +136,7 @@ class _AuthenticatedForumScreenState extends State<AuthenticatedForumScreen> {
     return Scaffold(
       backgroundColor: PrivateUi.bg,
       appBar: AppBar(
-        title: const Text('Fase 4 - Foro autenticado'),
+        title: const Text('Foro Privado'),
         backgroundColor: PrivateUi.bg,
         foregroundColor: PrivateUi.text,
       ),

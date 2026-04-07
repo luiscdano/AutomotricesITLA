@@ -41,7 +41,7 @@ class _ForumScreenState extends State<ForumScreen> {
     return Scaffold(
       backgroundColor: PublicUi.bg,
       appBar: AppBar(
-        title: const Text('Foro publico'),
+        title: const Text('Foro público'),
         backgroundColor: PublicUi.bg,
         foregroundColor: PublicUi.text,
       ),

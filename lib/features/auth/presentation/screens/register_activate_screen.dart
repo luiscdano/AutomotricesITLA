@@ -41,7 +41,7 @@ class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
 
     if (matricula.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Ingresa una matricula valida.')),
+        const SnackBar(content: Text('Ingresa una matrícula valida.')),
       );
       return;
     }
@@ -87,7 +87,7 @@ class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
     return Scaffold(
       backgroundColor: _bg,
       appBar: AppBar(
-        title: const Text('Registro y activacion'),
+        title: const Text('Registro y activación'),
         backgroundColor: _bg,
         foregroundColor: _text,
       ),
@@ -110,7 +110,7 @@ class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Paso 1: Registrar matricula',
+                    'Paso 1: Registrar matrícula',
                     style: TextStyle(
                       color: _text,
                       fontSize: 18,
@@ -120,7 +120,7 @@ class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
                   const SizedBox(height: 12),
                   AppTextField(
                     controller: _matriculaController,
-                    label: 'Matricula',
+                    label: 'Matrícula',
                     hint: '2024-0034',
                     textInputAction: TextInputAction.done,
                     textColor: _text,
@@ -173,7 +173,7 @@ class _RegisterActivateScreenState extends State<RegisterActivateScreen> {
                   const SizedBox(height: 12),
                   AppTextField(
                     controller: _passwordController,
-                    label: 'Contrasena nueva',
+                    label: 'Contraseña nueva',
                     obscureText: true,
                     textColor: _text,
                     fillColor: _fieldBg,

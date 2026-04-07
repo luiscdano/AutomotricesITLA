@@ -156,7 +156,7 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Descripcion',
+                      'Descripción',
                       style: TextStyle(
                         color: PublicUi.text,
                         fontSize: 18,
@@ -166,7 +166,7 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
                     const SizedBox(height: 8),
                     Text(
                       detail.description.isEmpty
-                          ? 'Sin descripcion para este vehiculo.'
+                          ? 'Sin descripción para este vehiculo.'
                           : detail.description,
                       style: const TextStyle(
                         color: PublicUi.muted,

@@ -22,17 +22,17 @@ class _PublicHubScreenState extends State<PublicHubScreen> {
     _HubSlide(
       icon: Icons.newspaper_rounded,
       title: 'Noticias automotrices',
-      subtitle: 'Titulares y detalle en HTML desde el API.',
+      subtitle: 'Titulares y detalles de Noticias.',
     ),
     _HubSlide(
       icon: Icons.video_library_rounded,
       title: 'Videos educativos',
-      subtitle: 'Material de apoyo con acceso directo a YouTube.',
+      subtitle: 'Material de apoyo sobre automotrices.',
     ),
     _HubSlide(
       icon: Icons.forum_rounded,
       title: 'Foro comunitario',
-      subtitle: 'Lectura publica de temas y respuestas recientes.',
+      subtitle: 'Lectura pública de temas y respuestas recientes.',
     ),
   ];
 
@@ -65,7 +65,7 @@ class _PublicHubScreenState extends State<PublicHubScreen> {
             ),
             const SizedBox(height: 8),
             const Text(
-              'Accesos rapidos de la fase publica. Cada modulo consume datos reales del backend.',
+              'Accesos rapidos del área pública.',
               style: TextStyle(color: PublicUi.muted),
             ),
             const SizedBox(height: 12),
@@ -138,7 +138,7 @@ class _PublicHubScreenState extends State<PublicHubScreen> {
                 _HubTile(
                   icon: Icons.newspaper_rounded,
                   title: 'Noticias',
-                  subtitle: 'Lista y detalle',
+                  subtitle: 'Automotrices',
                   onTap: () => _push(context, const NewsListScreen()),
                 ),
                 _HubTile(
@@ -150,13 +150,13 @@ class _PublicHubScreenState extends State<PublicHubScreen> {
                 _HubTile(
                   icon: Icons.directions_car_filled_rounded,
                   title: 'Catalogo',
-                  subtitle: 'Filtro + detalle',
+                  subtitle: 'De autos',
                   onTap: () => _push(context, const CatalogScreen()),
                 ),
                 _HubTile(
                   icon: Icons.forum,
-                  title: 'Foro publico',
-                  subtitle: 'Modo lectura',
+                  title: 'Foro público',
+                  subtitle: 'Solo lectura',
                   onTap: () => _push(context, const ForumScreen()),
                 ),
                 _HubTile(
